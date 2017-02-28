@@ -1,48 +1,58 @@
-" Settings for Vundle
+" New-school 
 set nocompatible
 filetype off
 
+" [ PLUGINS ]
 
-" vim-plug Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
+Plug 'jreese802/vim-sleuth'
+Plug 'scrooloose/nerdtree'
+Plug 'Valloric/YouCompleteMe'
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
-syntax enable  " enable syntax processing
+source $HOME/.vim/align.vim
+
+syntax enable       " enable syntax processing
 set background=dark " dark color scheme
 
-" spaces and tabs
+" [ INDENTATION ]
 
-set tabstop=4 " visual spaces displayed per tab
+set tabstop=4     " visual spaces displayed per tab
 set softtabstop=4 " programmatic spaces per tab
-set expandtab " spaces instead of tabs
+set expandtab     " spaces instead of tabs
 set smarttab
-set shiftwidth=4 " << and >> move line by 4 spaces
+set shiftwidth=4  " << and >> move line by 4 spaces
 
 set backspace=indent,eol,start " backspace has more power
 
-"UI Stuff
-set number " show line numbers
-set showcmd " show last command in the bottom bar
-set wildmenu " visual autocomplete for commands
-set lazyredraw " speeds up macros
-set showmatch " bracket highlighting for [{()}]
-set laststatus=2 " always show status line
-set ruler " show cursor position in status bar
-set scrolloff=3 "always keep the cursor 3 lines from the top or bottom
+" [ USER INTERFACE ]
+set number         " show line numbers
 set relativenumber " show relative line numbers
-set number " with relativenumber, show absolute line number for current line
+set showcmd        " show last command in the bottom bar
+set wildmenu       " visual autocomplete for commands
+set lazyredraw     " speeds up macros
+set showmatch      " bracket highlighting for [{()}]
+set laststatus=2   " always show status line
+set ruler          " show cursor position in status bar
+set scrolloff=3    "always keep the cursor 3 lines from the top or bottom
 
-"" THEME
+" show tabs 
+set list
+set listchars=tab:▸\ 
+
+" [ THEME ]
+"
 " 256 color mode
 set t_Co=256
-" let g:rehash256 = 1
 colorscheme molokai
-" let g:molokai_original = 1
 
+" [ MISC ]
 
+nnoremap <leader>b :NERDTreeToggle<CR>
 
 " eliminate insert-mode delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -64,7 +74,7 @@ nnoremap <Leader>p :set syntax=python <CR>
 " Searching
 
 set incsearch " search as characters are entered
-set hlsearch " highlight matches
+set hlsearch  " highlight matches
 
 " /<space> to undo  highlighting
 nnoremap <leader><space> :nohlsearch<CR> 
