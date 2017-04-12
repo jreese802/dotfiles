@@ -7,11 +7,13 @@ filetype off
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
 Plug 'tomasr/molokai'
 Plug 'jreese802/vim-sleuth'
-Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'danro/rename.vim'
 call plug#end()
 
 source $HOME/.vim/align.vim
@@ -38,7 +40,7 @@ set lazyredraw     " speeds up macros
 set showmatch      " bracket highlighting for [{()}]
 set laststatus=2   " always show status line
 set ruler          " show cursor position in status bar
-set scrolloff=3    "always keep the cursor 3 lines from the top or bottom
+set scrolloff=3    " always keep the cursor 3 lines from the top or bottom
 
 " show tabs 
 set list
@@ -52,7 +54,7 @@ colorscheme molokai
 
 " [ MISC ]
 
-nnoremap <leader>b :NERDTreeToggle<CR>
+" nnoremap <leader>b :NERDTreeToggle<CR>
 
 " eliminate insert-mode delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -70,11 +72,14 @@ nnoremap <Leader>c :set cursorline! <CR>
 
 " set python syntax with \p
 nnoremap <Leader>p :set syntax=python <CR>
+nnoremap <Leader>j :set syntax=javascript <CR>
 
 " Searching
 
 set incsearch " search as characters are entered
 set hlsearch  " highlight matches
+set ignorecase " case-insensitive search
+set smartcase " case-sensitive search only when searching for capitals letters
 
 " /<space> to undo  highlighting
 nnoremap <leader><space> :nohlsearch<CR> 
