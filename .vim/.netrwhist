@@ -1,0 +1,16 @@
+let g:netrw_dirhistmax  =30
+let g:netrw_dirhist_cnt =14
+let g:netrw_dirhist_1='/Users/johnreese/.tu'
+let g:netrw_dirhist_2='/Users/johnreese/Google Drive/CBT/cbt_node/followup_demo'
+let g:netrw_dirhist_3='/Users/johnreese/Google Drive/CBT/repos/monitorBrain'
+let g:netrw_dirhist_4='/Users/johnreese/Google Drive/CBT/repos'
+let g:netrw_dirhist_5='/Users/johnreese/seConf'
+let g:netrw_dirhist_6='/Users/johnreese/Downloads'
+let g:netrw_dirhist_7='/Users/johnreese/repos/vim/src'
+let g:netrw_dirhist_8='/Users/johnreese/Google Drive/CBT/node-selenium-hub/tests'
+let g:netrw_dirhist_9='/Users/johnreese/Google Drive/CBT/node-selenium-hub/node_modules/supertest'
+let g:netrw_dirhist_10='/Users/johnreese/repos/node-seleniumgrid/lib'
+let g:netrw_dirhist_11='/Users/johnreese/repos/node-seleniumgrid/tests'
+let g:netrw_dirhist_12='/Users/johnreese/repos/node-seleniumgrid'
+let g:netrw_dirhist_13='/Users/johnreese/grid-compare/cbt'
+let g:netrw_dirhist_14='/Users/johnreese/repos/node-seleniumgrid/tests'
