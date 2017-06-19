@@ -1,8 +1,14 @@
 # Path to oh-my-zsh installation.
 export ZSH=/Users/johnreese/.oh-my-zsh
 
+# fix for ctrl s and ctrl q
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
+
 # [ COLOR TERMINAL ]
-#
+
 # Set terminal to use 256 colors
 export TERM=xterm-256color
 
@@ -73,6 +79,12 @@ alias app1="ssh johnr@10.191.1.5"
 
 # use `config` for git dotfiles repo
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias lr="ls -ltr"
+alias lra="ls -ltra"
+
+# virtualenv
+alias pyenv='export WORKON_HOME=~/Envs; source /usr/local/bin/virtualenvwrapper.sh'
 
 # cursor movement back and forth
 bindkey "^[^[[C" forward-word

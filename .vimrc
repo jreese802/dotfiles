@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tomasr/molokai'
 Plug 'jreese802/vim-sleuth'
@@ -26,6 +25,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'vimwiki/vimwiki'
+Plug 'scrooloose/syntastic'
+" Plugin 'zyedidia/literate.vim'
+" Plug 'itchyny/vim-haskell-indent'
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 source $HOME/.vim/align.vim
@@ -115,6 +119,9 @@ let g:CtrlSpaceSaveWorkspaceOnSwitch = 0
 " eliminate insert-mode delay
 set timeoutlen=1000 ttimeoutlen=0
 
+" open splits in bottom/right
+" set splitbelow
+" set splitright
 
 " Code folding
 set foldenable
@@ -132,4 +139,4 @@ set smartcase " case-sensitive search only when searching for capitals letters
 
 
 " S H R U G B O I "
-" ¯\_(ツ)_/¯
+iabbrev shrug ¯\_(ツ)_/¯
