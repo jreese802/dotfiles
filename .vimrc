@@ -13,7 +13,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tomasr/molokai'
 Plug 'jreese802/vim-sleuth'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Plug 'Shougo/neocomplete.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -25,6 +25,7 @@ Plug 'wellle/targets.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'chrisbra/vim-diff-enhanced'
 call plug#end()
 
 source $HOME/.vim/align.vim
@@ -46,8 +47,8 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 nnoremap <Leader>c :set cursorline! <CR>
 
 " set python syntax with <leader>p (this is for all those terrible .py.php files)
-nnoremap <Leader>p :set syntax=python <CR>
-nnoremap <Leader>j :set syntax=javascript <CR>
+nnoremap <Leader>p :set filetype=python <CR>
+nnoremap <Leader>j :set filetype=javascript <CR>
 
 " remove highlights with <leader><space>
 nnoremap <leader><space> :nohlsearch<CR> 
@@ -125,6 +126,8 @@ set incsearch " search as characters are entered
 set hlsearch  " highlight matches
 set ignorecase " case-insensitive search
 set smartcase " case-sensitive search only when searching for capitals letters
+
+"" [[ EnhancedDiff ]] 
 
 
 
