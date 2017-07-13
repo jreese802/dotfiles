@@ -12,7 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tomasr/molokai'
 Plug 'jreese802/vim-sleuth'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'Shougo/neocomplete.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -43,8 +43,8 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 " [ KEYBINDS ]
 
 " move between buffers 
-nnoremap <silent><C-A> :CtrlSpaceGoUp<CR>
-nnoremap <silent><C-Q> :CtrlSpaceGoDown<CR>
+" nnoremap <silent><C-A> :CtrlSpaceGoUp<CR>
+" nnoremap <silent><C-Q> :CtrlSpaceGoDown<CR>
 
 " cursor line highlighting with <leader>c
 hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
@@ -59,8 +59,19 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " put clipboard register on <leader><leader>
 nnoremap <leader><leader> "+
-"
-"
+
+" [ VIMWIKI ]
+" bindings to open vimwiki
+" nmap gow <Plug>VimwikiIndex
+" nmap goW <Plug>VimwikiUiSelect
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+"             \ 'syntax': 'markdown',
+"             \'ext': '.md'}]
+" let g:vimwiki_ext2syntax = {'.md': 'markdown',
+"             \ '.mkd': 'markdown',
+"             \ '.wiki': 'media'}
+
+
 " [ INDENTATION ]
 
 set tabstop=4     " visual spaces displayed per tab

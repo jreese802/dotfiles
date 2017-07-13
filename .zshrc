@@ -76,6 +76,14 @@ KEYTIMEOUT=1
  
  # Connect to 1.5
 alias app1="ssh johnr@10.191.1.5"
+alias app2="ssh johnr@10.191.1.6"
+alias app3="ssh johnr@10.191.1.7"
+alias front1="ssh johnr@10.191.1.2"
+alias front2="ssh johnr@10.191.1.3"
+alias front="ssh johnr@10.191.1.11"
+alias serv="ssh johnr@10.191.1.8"
+
+alias pg="ps auwwx | grep"
 
 # use `config` for git dotfiles repo
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
