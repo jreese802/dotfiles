@@ -30,6 +30,8 @@ Plug 'vimwiki/vimwiki'
 " Plugin 'zyedidia/literate.vim'
 " Plug 'itchyny/vim-haskell-indent'
 Plug 'neovimhaskell/haskell-vim'
+" Plug 'sidorares/node-vim-debugger'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 source $HOME/.vim/align.vim
@@ -43,8 +45,8 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 " [ KEYBINDS ]
 
 " move between buffers 
-" nnoremap <silent><C-A> :CtrlSpaceGoUp<CR>
-" nnoremap <silent><C-Q> :CtrlSpaceGoDown<CR>
+" nnoremap <silent>gb :bn<CR>
+" nnoremap <silent>gB :bp<CR>
 
 " cursor line highlighting with <leader>c
 hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
@@ -62,14 +64,25 @@ nnoremap <leader><leader> "+
 
 " [ VIMWIKI ]
 " bindings to open vimwiki
-" nmap gow <Plug>VimwikiIndex
-" nmap goW <Plug>VimwikiUiSelect
-" let g:vimwiki_list = [{'path': '~/vimwiki/',
-"             \ 'syntax': 'markdown',
-"             \'ext': '.md'}]
+nmap gow <Plug>VimwikiIndex
+nmap goW <Plug>VimwikiUiSelect
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \ 'syntax': 'markdown',
+            \'ext': '.md'}]
 " let g:vimwiki_ext2syntax = {'.md': 'markdown',
 "             \ '.mkd': 'markdown',
 "             \ '.wiki': 'media'}
+
+
+" [ SNEAK ]
+" remap normal t and f to use Sneak plugin
+if !empty(glob("~/.vim/plugged/vim-sleuth/plugin/sleuth.vim"))
+    " echo 'Overriding F and T with Vim-Sleuth'
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+    map t <Plug>Sneak_t
+    map T <Plug>Sneak_T
+endif
 
 
 " [ INDENTATION ]
@@ -137,6 +150,10 @@ set timeoutlen=1000 ttimeoutlen=0
 " Code folding
 set foldenable
 set foldlevelstart=99
+
+" x should always use the black-hole register
+nnoremap x "_x
+nnoremap X "_X
 
 " Searching
 
