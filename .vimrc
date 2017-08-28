@@ -46,14 +46,20 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 nnoremap <Leader>c :set cursorline! <CR>
 
 " set python syntax with <leader>p (this is for all those terrible .py.php files)
-nnoremap <Leader>p :set syntax=python <CR>
-nnoremap <Leader>j :set syntax=javascript <CR>
+nnoremap <Leader>p :set filetype=python <CR>
+nnoremap <Leader>j :set filetype=javascript <CR>
 
 " remove highlights with <leader><space>
 nnoremap <leader><space> :nohlsearch<CR> 
 
 " put clipboard register on <leader><leader>
 nnoremap <leader><leader> "+
+
+" delete to null register
+nnoremap <leader>d "_d
+
+" fullscreen window
+nnoremap <leader>f 
 "
 "
 " [ INDENTATION ]
