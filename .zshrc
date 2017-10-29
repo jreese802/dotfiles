@@ -11,6 +11,9 @@ stty -ixoff
 
 # Set terminal to use 256 colors
 export TERM=xterm-256color
+# export LS_COLORS=`cat ~/nightshell/dircolors`
+[ -n "$PS1" ] && sh ~/nightshell/seagrey-dark
+
 
 # [ TNEME ]
 
@@ -48,7 +51,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # TODO: install these manually:
-# plugins=( gitfast extract z common-aliases npm git-extras history-substring-search )
+plugins=( gitfast extract z common-aliases npm git-extras history-substring-search )
 
 # load NVM
 export NVM_DIR="$HOME/.nvm"
@@ -73,27 +76,29 @@ KEYTIMEOUT=1
 # using default ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
- # [ ALIASES ]
+# [ ALIASES ]
+# Moved these to their own file
+source ~/.aliasrc
  
  # Connect to 1.5
-alias app1="ssh johnr@10.191.1.5"
-alias app2="ssh johnr@10.191.1.6"
-alias app3="ssh johnr@10.191.1.7"
-alias front1="ssh johnr@10.191.1.2"
-alias front2="ssh johnr@10.191.1.3"
-alias front="ssh johnr@10.191.1.11"
-alias serv="ssh johnr@10.191.1.8"
+# alias app1="ssh johnr@10.191.1.5"
+# alias app2="ssh johnr@10.191.1.6"
+# alias app3="ssh johnr@10.191.1.7"
+# alias front1="ssh johnr@10.191.1.2"
+# alias front2="ssh johnr@10.191.1.3"
+# alias front="ssh johnr@10.191.1.11"
+# alias serv="ssh johnr@10.191.1.8"
 
-alias pg="ps auwwx | grep"
+# alias pg="ps auwwx | grep"
 
-# use `config` for git dotfiles repo
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+# # use `config` for git dotfiles repo
+# alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-alias lr="ls -ltr"
-alias lra="ls -ltra"
+# alias lr="ls -ltr"
+# alias lra="ls -ltra"
 
-# virtualenv
-alias pyenv='export WORKON_HOME=~/Envs; source /usr/local/bin/virtualenvwrapper.sh'
+# # virtualenv
+# alias pyenv='export WORKON_HOME=~/Envs; source /usr/local/bin/virtualenvwrapper.sh'
 
 # cursor movement back and forth
 bindkey "^[^[[C" forward-word
@@ -104,4 +109,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin
 export PATH=$PATH:$HOME/repos/depot_tools
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+
+export WORKON_HOME=$HOME/virtualenvs
+export PROJECT_HOME=$HOME/repos
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
