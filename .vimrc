@@ -205,7 +205,7 @@ set t_Co=256
 colorscheme seagrey-dark
 
 set background=dark
-let g:airline_theme='dark'
+let g:airline_theme='base16_oceanicnext'
 
 " colorscheme solarized
 
