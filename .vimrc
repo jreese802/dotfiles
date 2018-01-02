@@ -11,14 +11,12 @@ Plug 'tpope/vim-surround'               " Manipulate quotes, tags, brackets, etc
 Plug 'tpope/vim-commentary'             " Manipulate comments
 Plug 'tpope/vim-jdaddy'                 " JSON Text Objects -- gqij pretty prints from inside json object
 Plug 'tpope/vim-fugitive'               " Git Interface for VIM
+Plug 'tpope/vim-rhubarb'
 Plug 'tomasr/molokai'                   " Monokai-esque theme
 Plug 'altercation/vim-colors-solarized' " Another Theme
 Plug 'nightsense/seagrey'               " Another Theme
 Plug 'vim-airline/vim-airline-themes'   " Airline Themes
-Plug 'ajh17/VimCompletesMe'             " Async autocomplete via external program
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
-Plug 'danro/rename.vim'
 Plug 'vim-airline/vim-airline'          " Sweet statusbar. Hard to customize though.
                                         " TODO: Create my own status bar
 Plug 'vim-ctrlspace/vim-ctrlspace'      " Neat interface for workspaces, buffers and tabs.
@@ -36,33 +34,35 @@ Plug 'airblade/vim-gitgutter'           " Symbols showing lines added/removed/ch
 Plug 'tpope/vim-unimpaired'             " Set of shortcuts focused around using the brackets
                                         " vim-unimpared; e.g. ]q -> next quickfix result;
 " Plug 'ternjs/tern_for_vim'              " IDE like hints for JS
-Plug 'Quramy/tsuquyomi'                 " tyepscript support
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'       " tyepscript support
+Plug 'Quramy/tsuquyomi'                 " tyepscript support
 Plug 'dhruvasagar/vim-table-mode'       " Awesome Table creation and alignment.
 Plug 'shime/vim-livedown'               " Auto-Updating mardown preview plugin. Opens in default browser
 Plug 'godlygeek/tabular'                " Sweet alignment manipulation (TODO: custom aliases and shortcuts)
 Plug 'MattesGroeger/vim-bookmarks'      " Awesome line-by-line bookmarks and annotations
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow Parens
+Plug 'w0rp/ale'                         " good async linter
 call plug#end()
 
 " turn on rainbow brackets
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
     \ ['darkgray',    'DarkOrchid3'],
     \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
     \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['darkcyan',    'RoyalBlue3'],
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
     \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
     \ ['Darkblue',    'firebrick3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
     \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
     \ ['darkred',     'DarkOrchid3'],
+    \ ['darkcyan',    'SeaGreen3'],
     \ ['red',         'firebrick3'],
     \ ]
 let g:rbpt_max = 16
@@ -132,8 +132,24 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 
 " fullscreen window
 " nnoremap <leader>f 
-"
-"
+
+" [ ALE ]
+" for linting and prettying
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['tsserver'] }
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'typescript': ['prettier'] }
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_set_quickfix = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap gp :silent %!prettier --stdin --trailing-comma all --single-quote<CR>
+
+
+
 " [ VIMWIKI ]
 " bindings to open vimwiki
 nmap gow <Plug>VimwikiIndex
@@ -316,4 +332,7 @@ endif
 nnoremap x "_x
 nnoremap X "_X
 
-nnoremap mN :BookmarkPrev
+
+" macros for copy above and copy below
+let @y='a'
+let @e='a'
