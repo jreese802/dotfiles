@@ -72,27 +72,11 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" let g:tsuquyomi_disable_quickfix = 1
-" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0 " Don't auto open/close location list
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode="passive"
-let g:syntastic_enable_signs=0
-" nnoremap <F7> :SyntasticCheck<CR> :lopen<CR>
-
 " table mode markdown-compatible
 let g:table_mode_corner='|'
 
 " ebook editing
 au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
-
-source $HOME/.vim/align.vim
-
-" source $HOME/.vim/powerlineesque.vim
 
 syntax enable       " enable syntax processing
 
