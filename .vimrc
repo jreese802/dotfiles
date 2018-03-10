@@ -1,7 +1,8 @@
-" New-school 
+" New-school
 set nocompatible
 set hidden
-filetype off
+filetype on
+syntax enable
 
 " [ PLUGINS ]
 
@@ -79,10 +80,6 @@ au Syntax * RainbowParenthesesLoadBraces
 " table mode markdown-compatible
 let g:table_mode_corner='|'
 
-" ebook editing
-au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
-
-syntax enable       " enable syntax processing
 
 
 set updatetime=250
@@ -106,7 +103,7 @@ noremap <leader>fh :Helptags
 
 " vnoremap \aa :Tab /:\zs<CR>
 
-" move between buffers 
+" move between buffers
 " nnoremap <silent>gb :bn<CR>
 " nnoremap <silent>gB :bp<CR>
 
@@ -119,7 +116,7 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 " nnoremap <Leader>j :set filetype=javascript <CR>
 
 " remove highlights with <leader><space>
-" nnoremap <leader><space> :nohlsearch<CR> 
+" nnoremap <leader><space> :nohlsearch<CR>
 
 " put clipboard register on <leader><leader>
 " nnoremap <leader><leader> "+
@@ -194,6 +191,7 @@ set scrolloff=3    " always keep the cursor 3 lines from the top or bottom
 "   let autocommands_loaded = 1
 "   au ...
 " endif
+" build python and js files with gb
 autocmd FileType python nnoremap <buffer> gb :!python %<CR>
 autocmd FileType javascript nnoremap <buffer> gb :!node %<CR>
 " autocmd FileType python nnoremap <buffer> gb call RunFile(python)<CR>
@@ -213,7 +211,7 @@ endif
 " endfunction
 
 
-" show tabs 
+" show tabs
 set list
 set listchars=tab:▸\ 
 
@@ -243,7 +241,7 @@ if executable("ag")
 endif
 
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
-let g:CtrlSpaceSymbols = 
+let g:CtrlSpaceSymbols =
         \{
             \"Zoom": "🔎  ",
             \"BM": "❤️ ",
@@ -312,7 +310,7 @@ nnoremap <Leader>p :set filetype=python <CR>
 nnoremap <Leader>j :set filetype=javascript <CR>
 
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :nohlsearch<CR>
 
 " clipboard shortcut for normal and visual mode
 noremap <leader><leader> "+
@@ -346,7 +344,7 @@ noremap ' "
 noremap " '
 
 
-" macros for copy above and copy below 
+" macros for copy above and copy below
 " (basically normal mode mappings for i_CTRL_E and i_CTRL-Y)
 let @y='a'
 let @e='a'
