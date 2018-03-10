@@ -44,6 +44,10 @@ Plug 'godlygeek/tabular'                " Sweet alignment manipulation (TODO: cu
 Plug 'MattesGroeger/vim-bookmarks'      " Awesome line-by-line bookmarks and annotations
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow Parens
 Plug 'w0rp/ale'                         " good async linter
+Plug '/usr/local/opt/fzf'               " fuzzy finder, better than ctrlspace
+Plug 'junegunn/fzf.vim'                 " fuzzy finder, better than ctrlspace
+Plug 'Yggdroot/hiPairs'                 " highlight matching/unbalanced parens
+Plug 'bronson/vim-visual-star-search'   " start * or # search from visual mode
 call plug#end()
 
 " turn on rainbow brackets
@@ -91,6 +95,15 @@ set rtp+=/usr/local/opt/fzf
 
 " [ KEYBINDS ]
 
+noremap <leader>ff :Files
+noremap <leader>fb :Buffers
+noremap <leader>fa :Ag
+noremap <leader>fw :Windows
+noremap <leader>fc :Commits
+noremap <leader>fC :Commands
+noremap <leader>fm :Maps
+noremap <leader>fh :Helptags
+
 " vnoremap \aa :Tab /:\zs<CR>
 
 " move between buffers 
@@ -120,14 +133,20 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 " [ ALE ]
 " for linting and prettying
 let g:ale_linters = {
+      \ 'python': ['flake8'],
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tsserver'] }
 let g:ale_fixers = {
       \ 'javascript': ['prettier'],
       \ 'typescript': ['prettier'] }
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_set_quickfix = 1
+
+let g:ale_python_flake8_executable = '/usr/local/bin/python3'
+let g:ale_python_flake8_options = '-m flake8'
+let g:ale_python_flake8_use_global = 0
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap gp :silent %!prettier --stdin --trailing-comma all --single-quote<CR>
@@ -253,7 +272,7 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Code folding
 set foldenable
-set foldlevelstart=99
+set foldmethod=syntax
 
 " x should always use the black-hole register
 " nnoremap x "_x
@@ -266,9 +285,6 @@ set hlsearch  " highlight matches
 set ignorecase " case-insensitive search
 set smartcase " case-sensitive search only when searching for capitals letters
 
-"" [[ EnhancedDiff ]] 
-
-
 
 " S H R U G B O I "
 iabbrev shrug ¯\_(ツ)_/¯
@@ -276,32 +292,39 @@ iabbrev shrug ¯\_(ツ)_/¯
 
 
 " [[ REMAPS BINDINGS ETC ]]
-"paste default buffer in insert mode
-inoremap <F1> "
+
 " turn on syntastic
 if !empty(glob("~/.vim/plugged/syntastic/plugin/syntastic.vim"))
   nnoremap <F7> :SyntasticCheck<CR> :lopen<CR>
 endif
-" easy tabularize shortcut
+
+" easy tabularize shortcut (if installed)
 if !empty(glob("~/.vim/plugged/tabular/plugin/Tabular.vim"))
   vnoremap <leader>a :Tabularize /
 endif
+
 " cursor line highlighting
 nnoremap <Leader>c :set cursorline! <CR>
-" set syntax
+
+" shortcuts to set file syntax
+" used for our .py.php files or warner's .es7 files
 nnoremap <Leader>p :set filetype=python <CR>
 nnoremap <Leader>j :set filetype=javascript <CR>
+
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR> 
 
 " clipboard shortcut for normal and visual mode
-vnoremap <leader><leader> "+
-nnoremap <leader><leader> "+
+noremap <leader><leader> "+
+
 " <leader>d shortcut for 'delete to black hole'
 nnoremap <leader>d "_d
 
 " kinda wonky fullscreen shortcut
+" maximizes window width then height
 nnoremap <leader>f 
+
+
 " remap normal t and f to use Sneak plugin
 "   Doesn't fail if sneak isn't installed!
 if !empty(glob("~/.vim/plugged/vim-sleuth/plugin/sleuth.vim"))
@@ -313,10 +336,17 @@ if !empty(glob("~/.vim/plugged/vim-sleuth/plugin/sleuth.vim"))
 endif
 
 " x should always use the black-hole register
+" I hate when I yank something and accidentally overwrite it with x
 nnoremap x "_x
 nnoremap X "_X
 
+" I use registers way more than marks
+" so swap them around
+noremap ' "
+noremap " '
 
-" macros for copy above and copy below
+
+" macros for copy above and copy below 
+" (basically normal mode mappings for i_CTRL_E and i_CTRL-Y)
 let @y='a'
 let @e='a'
