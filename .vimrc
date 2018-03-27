@@ -27,7 +27,7 @@ Plug 'justinmk/vim-sneak'               " One and two character searches. next/p
 Plug 'tpope/vim-repeat'                 " Enables . operator for surrount, commentary, targets, etc.
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'chrisbra/vim-diff-enhanced'       " Better vim diff? Not sure what it changes
-Plug 'vimwiki/vimwiki'                  " Personal wiki CMS
+" Plug 'vimwiki/vimwiki'                  " Personal wiki CMS
                                         " Plug 'itchyny/vim-haskell-indent'
 Plug 'neovimhaskell/haskell-vim'
                                         " Plug 'sidorares/node-vim-debugger'
@@ -36,19 +36,19 @@ Plug 'tpope/vim-unimpaired'             " Set of shortcuts focused around using 
                                         " vim-unimpared; e.g. ]q -> next quickfix result;
 " Plug 'ternjs/tern_for_vim'              " IDE like hints for JS
 " Plug 'vim-syntastic/syntastic'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'leafgarland/typescript-vim'       " tyepscript support
-Plug 'Quramy/tsuquyomi'                 " tyepscript support
-Plug 'dhruvasagar/vim-table-mode'       " Awesome Table creation and alignment.
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'leafgarland/typescript-vim'       " tyepscript support
+" Plug 'Quramy/tsuquyomi'                 " tyepscript support
+" Plug 'dhruvasagar/vim-table-mode'       " Awesome Table creation and alignment.
 Plug 'shime/vim-livedown'               " Auto-Updating mardown preview plugin. Opens in default browser
 Plug 'godlygeek/tabular'                " Sweet alignment manipulation (TODO: custom aliases and shortcuts)
-Plug 'MattesGroeger/vim-bookmarks'      " Awesome line-by-line bookmarks and annotations
+" Plug 'MattesGroeger/vim-bookmarks'      " Awesome line-by-line bookmarks and annotations
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow Parens
-Plug 'w0rp/ale'                         " good async linter
+" Plug 'w0rp/ale'                         " good async linter
 Plug '/usr/local/opt/fzf'               " fuzzy finder, better than ctrlspace
 Plug 'junegunn/fzf.vim'                 " fuzzy finder, better than ctrlspace
 Plug 'Yggdroot/hiPairs'                 " highlight matching/unbalanced parens
-Plug 'bronson/vim-visual-star-search'   " start * or # search from visual mode
+" Plug 'bronson/vim-visual-star-search'   " start * or # search from visual mode
 call plug#end()
 
 " turn on rainbow brackets
@@ -80,7 +80,11 @@ au Syntax * RainbowParenthesesLoadBraces
 " table mode markdown-compatible
 let g:table_mode_corner='|'
 
-
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window. Protect against
+" screwing up folding when switching between windows.
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
 set updatetime=250
 
