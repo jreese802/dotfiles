@@ -11,7 +11,7 @@ stty -ixoff
 
 # Set terminal to use 256 colors
 export TERM=xterm-256color
-# export LS_COLORS=`cat ~/nightshell/dircolors`
+# export LS_COLORS=`cat ~/shoji/dircolors`
 [ -n "$PS1" ] && sh ~/nightshell/seagrey-dark
 
 
@@ -107,9 +107,12 @@ bindkey "^[^[[D" backward-word
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin
 export PATH=$PATH:$HOME/repos/depot_tools
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=$PATH:/usr/local/opt/python/libexec/bin
+export PATH=`pwd`/flutter/bin:$PATH
+export PATH=/Users/johnreese/.pyenv/shims:$PATH
+export PATH=/Users/johnreese/.local/bin:$PATH
 
 
 export WORKON_HOME=$HOME/virtualenvs
@@ -118,3 +121,37 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# bindkey -v
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+precmd() { RPROMPT="" }
+function zle-line-init zle-keymap-select {
+   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/apr/bin:$PATH"
+export PATH="/usr/local/opt/php@7.0/bin:$PATH"
+export PATH="/usr/local/opt/php@7.0/sbin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/johnreese/.sdkman"
+[[ -s "/Users/johnreese/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/johnreese/.sdkman/bin/sdkman-init.sh"
