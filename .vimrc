@@ -1,8 +1,8 @@
 " New-school
 set nocompatible
 set hidden
-filetype on
-syntax enable
+filetype off
+syntax off
 set encoding=utf-8
 
 " [ PLUGINS ]
@@ -47,42 +47,43 @@ Plug 'tpope/vim-unimpaired'             " Set of shortcuts focused around using 
 Plug 'shime/vim-livedown'               " Auto-Updating mardown preview plugin. Opens in default browser
 Plug 'godlygeek/tabular'                " Sweet alignment manipulation (TODO: custom aliases and shortcuts)
 " Plug 'MattesGroeger/vim-bookmarks'      " Awesome line-by-line bookmarks and annotations
-Plug 'kien/rainbow_parentheses.vim'     " Rainbow Parens
+" Plug 'kien/rainbow_parentheses.vim'     " Rainbow Parens
 Plug 'w0rp/ale'                         " good async linter
 Plug '/usr/local/opt/fzf'               " fuzzy finder, better than ctrlspace
 Plug 'junegunn/fzf.vim'                 " fuzzy finder, better than ctrlspace
 " Plug 'Yggdroot/hiPairs'                 " highlight matching/unbalanced parens
-Plug 'mhinz/vim-mix-format'
-Plug 'elixir-lang/vim-elixir'
+" Plug 'mhinz/vim-mix-format'
+" Plug 'elixir-lang/vim-elixir'
 " Plug 'zxqfl/tabnine-vim'
 " Plug 'bronson/vim-visual-star-search'   " start * or # search from visual mode
+" Plug 'markonm/traces.vim' " better incsearc
 call plug#end()
 
 " turn on rainbow brackets
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 " table mode markdown-compatible
 let g:table_mode_corner='|'
@@ -318,7 +319,7 @@ set foldmethod=syntax
 
 " Searching
 
-set incsearch " search as characters are entered
+" set incsearch " search as characters are entered
 set hlsearch  " highlight matches
 set ignorecase " case-insensitive search
 set smartcase " case-sensitive search only when searching for capitals letters

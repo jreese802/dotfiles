@@ -1,5 +1,5 @@
 # Path to oh-my-zsh installation.
-export ZSH=/Users/johnreese/.oh-my-zsh
+export ZSH=/Users/john.reese/.oh-my-zsh
 
 # fix for ctrl s and ctrl q
 stty stop ''
@@ -111,8 +111,8 @@ export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/
 export PATH=$PATH:$HOME/repos/depot_tools
 export PATH=$PATH:/usr/local/opt/python/libexec/bin
 export PATH=`pwd`/flutter/bin:$PATH
-export PATH=/Users/johnreese/.pyenv/shims:$PATH
-export PATH=/Users/johnreese/.local/bin:$PATH
+export PATH=/Users/john.reese/.pyenv/shims:$PATH
+export PATH=/Users/john.reese/.local/bin:$PATH
 
 
 export WORKON_HOME=$HOME/virtualenvs
@@ -151,7 +151,8 @@ export PATH="/usr/local/opt/php@7.0/bin:$PATH"
 export PATH="/usr/local/opt/php@7.0/sbin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/Users/john.reese/Downloads/sonar-scanner-3.3.0.1492-macosx/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/johnreese/.sdkman"
-[[ -s "/Users/johnreese/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/johnreese/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/Users/john.reese/.sdkman"
+[[ -s "/Users/john.reese/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.reese/.sdkman/bin/sdkman-init.sh"
