@@ -19,6 +19,7 @@ export TERM=xterm-256color
 
 # Zsh will show username for all users except DEFAULT_USER
 DEFAULT_USER=`whoami`
+# ZSH_THEME="spaceship"
 ZSH_THEME="agnoster"
 # Red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -51,11 +52,25 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # TODO: install these manually:
-plugins=( gitfast extract z common-aliases npm git-extras history-substring-search )
+plugins=( gitfast extract z common-aliases npm git-extras history-substring-search kubectl)
 
-# load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# lazy-load NVM
+# Add every binary that requires nvm, npm or node to run to an array of node globals
+NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+NODE_GLOBALS+=("node")
+NODE_GLOBALS+=("nvm")
+
+# Lazy-loading nvm + npm on node globals call
+load_nvm () {
+  export NVM_DIR=~/.nvm
+  [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+}
+
+# Making node global trigger the lazy loading
+for cmd in "${NODE_GLOBALS[@]}"; do
+  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+done
+
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -115,9 +130,9 @@ export PATH=/Users/john.reese/.pyenv/shims:$PATH
 export PATH=/Users/john.reese/.local/bin:$PATH
 
 
-export WORKON_HOME=$HOME/virtualenvs
+# export WORKON_HOME=$HOME/virtualenvs
 export PROJECT_HOME=$HOME/repos
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -156,3 +171,4 @@ export PATH="/Users/john.reese/Downloads/sonar-scanner-3.3.0.1492-macosx/bin:$PA
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/john.reese/.sdkman"
 [[ -s "/Users/john.reese/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.reese/.sdkman/bin/sdkman-init.sh"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"

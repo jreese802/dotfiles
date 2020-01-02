@@ -157,6 +157,8 @@ let g:ale_python_flake8_executable = '/usr/local/bin/python3'
 let g:ale_python_flake8_options = '-m flake8'
 let g:ale_python_flake8_use_global = 0
 
+let g:ale_enabled = 0
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap gp :silent %!prettier --stdin --trailing-comma all --single-quote<CR>
